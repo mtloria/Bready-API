@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using BreadyAPI.DbContexts;
+using System;
 
 namespace Bready_API
 {
@@ -20,7 +21,7 @@ namespace Bready_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = "Server=localhost;Database=BreadDB;User Id=sa;Password=reallyStrongPwd123";
+            var connectionString = Environment.GetEnvironmentVariable("BreadyDBString");
             services.AddDbContext<BreadDbContext>(options => options.UseSqlServer(connectionString));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
