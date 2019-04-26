@@ -24,6 +24,7 @@ namespace Bready_API
             var connectionString = Environment.GetEnvironmentVariable("BreadyDBString");
             services.AddDbContext<BreadDbContext>(options => options.UseSqlServer(connectionString));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddCors(c => c.AddPolicy("AllowOrigin", options => options.WithOrigins("http://localhost:3000")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,6 +39,7 @@ namespace Bready_API
                 app.UseHsts();
             }
 
+            app.UseCors(options => options.WithOrigins("http://localhost:3000"));
             //app.UseHttpsRedirection();
             app.UseMvc();
         }

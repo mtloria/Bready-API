@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using BreadyAPI.DbContexts;
 using BreadyAPI.DataAccess;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Cors;
 
 namespace Bready_API.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors("AllowOrigin")]
     [ApiController]
     public class BreadsController : ControllerBase
     {
@@ -23,7 +25,8 @@ namespace Bready_API.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return Ok(_breadService.GetBreads().Select(bread => bread.Name));
+
+            return Ok(_breadService.GetBreads());
         }
 
         // GET api/values/5
