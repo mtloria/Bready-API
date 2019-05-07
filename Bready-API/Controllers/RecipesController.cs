@@ -3,6 +3,7 @@ using BreadyAPI.DbContexts;
 using BreadyAPI.DataAccess;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Cors;
+using System.Linq;
 
 namespace Bready_API.Controllers
 {
@@ -19,11 +20,11 @@ namespace Bready_API.Controllers
         }
 
         // GET api/recipes
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        [HttpGet("{breadId}")]
+        public ActionResult<string> Get(int breadId)
         {
 
-            return Ok(_recipeService.GetRecipes());
+            return Ok(_recipeService.GetRecipes().FirstOrDefault(recipe => recipe.BreadId == breadId));
         }
     }
 }
