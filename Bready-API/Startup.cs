@@ -23,6 +23,7 @@ namespace Bready_API
         {
             var connectionString = Environment.GetEnvironmentVariable("BreadyDBString");
             services.AddDbContext<BreadDbContext>(options => options.UseSqlServer(connectionString));
+            services.AddDbContext<RecipeDbContext>(options => options.UseSqlServer(connectionString));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddCors(c => c.AddPolicy("AllowOrigin", options => options.WithOrigins("http://localhost:3000")));
         }
