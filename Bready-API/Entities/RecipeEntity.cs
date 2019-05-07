@@ -18,5 +18,6 @@ namespace BreadyAPI.Entities
         public decimal ProofTime { get; set; }
         public int OvenTemp { get; set; }
         public decimal BakeTime { get; set; }
+        public decimal MixTime { get; set; }
     }
 }
