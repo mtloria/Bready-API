@@ -20,6 +20,7 @@ namespace BreadyAPI.Models
         public int OvenTemp { get; set; }
         public decimal BakeTime { get; set; }
         public decimal MixTime { get; set; }
+        public string StarterType { get; set; }
 
         public Recipe(RecipeEntity entity)
         {
@@ -39,6 +40,7 @@ namespace BreadyAPI.Models
             OvenTemp = entity.OvenTemp;
             BakeTime = entity.BakeTime;
             MixTime = entity.MixTime;
+            StarterType = entity.StarterType;
         }
     }
 }
