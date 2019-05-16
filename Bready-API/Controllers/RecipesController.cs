@@ -1,30 +1,28 @@
-﻿using System.Collections.Generic;
-using BreadyAPI.DbContexts;
+﻿using BreadyAPI.DbContexts;
 using BreadyAPI.DataAccess;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Cors;
-using System.Linq;
 
 namespace Bready_API.Controllers
 {
     [Route("api/[controller]")]
     [EnableCors("AllowOrigin")]
     [ApiController]
-    public class RecipesController : ControllerBase
+    public class StepsController : ControllerBase
     {
-        private readonly RecipeData _recipeService;
+        private readonly StepData _stepService;
 
-        public RecipesController(RecipeDbContext context)
+        public StepsController(StepDbContext context)
         {
-            _recipeService = new RecipeData(context);
+            _stepService = new StepData(context);
         }
 
-        // GET api/recipes
-        [HttpGet("{breadId}")]
-        public ActionResult<string> Get(int breadId)
+        // GET api/steps/recipeId/stepNumber
+        [HttpGet("{recipeId}/{stepNumber}")]
+        public ActionResult<string> Get(int recipeId, int stepNumber)
         {
 
-            return Ok(_recipeService.GetRecipes().FirstOrDefault(recipe => recipe.BreadId == breadId));
+            return Ok(_stepService.GetStepByNumberAndRecipeId(recipeId, stepNumber));
         }
     }
 }

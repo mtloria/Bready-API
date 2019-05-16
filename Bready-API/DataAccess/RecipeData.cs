@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using BreadyAPI.DbContexts;
 using BreadyAPI.Models;
 
@@ -14,10 +13,11 @@ namespace BreadyAPI.DataAccess
             _context = context;
         }
 
-        public List<Recipe> GetRecipes()
+        public Recipe GetRecipeByBreadId(int breadId)
         {
-            var recipeEntities = _context.Recipes;
-            return recipeEntities.Select(recipeEntity => new Recipe(recipeEntity)).ToList();
+            //ToDo: some breads will have multiple recipes, so we will have to handle this at some point
+            var recipeEntity = _context.Recipes.FirstOrDefault(recipe => recipe.BreadId == breadId);
+            return new Recipe(recipeEntity);
         }
     }
 }

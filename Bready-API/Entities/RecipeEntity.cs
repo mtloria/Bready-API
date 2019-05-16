@@ -20,5 +20,6 @@ namespace BreadyAPI.Entities
         public decimal BakeTime { get; set; }
         public decimal MixTime { get; set; }
         public string StarterType { get; set; }
+        public int NumberOfSteps { get; set; }
     }
 }
