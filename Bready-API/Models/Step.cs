@@ -9,6 +9,7 @@ namespace BreadyAPI.Models
         public int RecipeId { get; set; }
         public string Text { get; set; }
         public decimal TimeToNextStep { get; set; }
+        public string AdditionalText { get; set; }
 
         public Step(StepEntity entity)
         {
@@ -17,6 +18,7 @@ namespace BreadyAPI.Models
             RecipeId = entity.RecipeId;
             Text = entity.Text;
             TimeToNextStep = entity.TimeToNextStep;
+            AdditionalText = entity.AdditionalText;
         }
     }
 }
